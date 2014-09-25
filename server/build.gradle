@@ -1,0 +1,57 @@
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+    mavenCentral()
+}
+
+project.ext {
+    dropwizardVersion = '0.7.1'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile (
+            'io.dropwizard:dropwizard-core:' + dropwizardVersion,
+            'io.dropwizard:dropwizard-assets:' + dropwizardVersion
+    )
+}
+
+// The main class of the application
+mainClassName = 'thalia.ThaliaApplication'
+
+shadowJar {
+    mergeServiceFiles()
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+}
+jar {
+    manifest {
+        attributes "Implementation-Title": "Thalia Server"
+        attributes "Implementation-Version": version
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+run {
+    args 'server', './config.yaml'
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath (
+            'com.github.jengelman.gradle.plugins:shadow:1.1.1'
+        )
+    }
+}
+
+
+

@@ -1,0 +1,16 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"name": "sources",
+			"path": "src",
+		},
+		{
+			"follow_symlinks": true,
+			"path": ".",
+			"name": "build files",
+			"folder_exclude_patterns": ["src", "notes"]
+		}
+	]
+}

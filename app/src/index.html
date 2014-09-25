@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html ng-app="thalia" ng-controller="AppCtrl">
+  <head>
+    <meta charset="utf-8" />
+    <title ng-bind="pageTitle"></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- font awesome from BootstrapCDN -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
+
+    <!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+    <script type="text/javascript" src="<%= file %>"></script><% }); %>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" ng-init="menuCollapsed = true"
+            ng-click="menuCollapsed = ! menuCollapsed">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand">
+            <big>thalia</big> - Media Manager
+            <small>
+              <a href="http://github.com/ngbp/ngbp/blob/v<%= version %>-release/CHANGELOG.md">
+                v<%= version %>
+              </a>
+            </small>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse" collapse="menuCollapsed">
+          <ul class="nav navbar-nav">
+            <li ui-sref-active="active">
+              <a href ui-sref="home">
+                <i class="fa fa-home"></i>
+                Home
+              </a>
+            </li>
+            <li ui-sref-active="active">
+              <a href ui-sref="about">
+                <i class="fa fa-info-circle"></i>
+                What is it?
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ngbp/ngbp#readme">
+                <i class="fa fa-book"></i>
+                Read the Docs
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ngbp/ngbp">
+                <i class="fa fa-github-alt"></i>
+                Github
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ngbp/ngbp/issues">
+                <i class="fa fa-comments"></i>
+                Support
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" ui-view="main"></div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          Footer
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
