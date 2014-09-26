@@ -5,7 +5,24 @@ server:
     connector:
         type: http
         port: 8083
-        reuseAddress: true
+
+database:
+  driverClass: org.apache.derby.jdbc.EmbeddedDriver
+  user: thalia
+  url: jdbc:derby:thaliaDB;create=true
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.DerbyTenSevenDialect
+    hibernate.hbm2ddl.auto: create-drop
+    hibernate.show_sql: true
+    hibernate.format_sql: true
+    hibernate.hbm2ddl.import_files: /import.sql
+
+  # the SQL query to run when validating a connection's liveness
+  validationQuery: "/* Thalia Health Check */ VALUES 1"
+  logValidationErrors: true
+
+
 
 logging:
     # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.

@@ -1,9 +1,10 @@
 angular.module( 'thalia', [
   'templates-app',
   'templates-common',
+  'thalia.filters',
+  'ui.router',
   'thalia.home',
-  'thalia.about',
-  'ui.router'
+  'thalia.about'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {

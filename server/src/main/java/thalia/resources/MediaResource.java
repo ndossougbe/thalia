@@ -1,28 +1,35 @@
 package thalia.resources;
 
-import com.codahale.metrics.annotation.Timed;
-import com.google.common.base.Optional;
+import io.dropwizard.hibernate.UnitOfWork;
 import thalia.core.Media;
+import thalia.dao.MediaDAO;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.List;
 
 @Path("/media")
 @Produces(MediaType.APPLICATION_JSON)
 public class MediaResource {
-    private final AtomicLong counter;
+    private final MediaDAO dao;
 
-    public MediaResource() {
-        this.counter = new AtomicLong();
+    public MediaResource(MediaDAO dao) {
+        this.dao = dao;
     }
 
     @GET
-    public Media sayHello(@QueryParam("name") Optional<String> name) {
+    @UnitOfWork
+    @Path("/{id}")
+    public Media get(@PathParam("id") long id) {
+        return dao.findById(id);
+    }
 
-        return new Media(counter.incrementAndGet(), name.or("something"));
+    @GET
+    @UnitOfWork
+    public List<Media> list() {
+        return dao.findAll();
     }
 }

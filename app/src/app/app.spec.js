@@ -1,5 +1,5 @@
 describe( 'AppCtrl', function() {
-  describe( 'isCurrentUrl', function() {
+  describe( 'dummy test', function() {
     var AppCtrl, $location, $scope;
 
     beforeEach( module( 'thalia' ) );
