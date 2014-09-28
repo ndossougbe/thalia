@@ -3,13 +3,13 @@ angular.module( 'thalia', [
   'templates-common',
   'thalia.filters',
   'thalia.layout',
-  'ui.router',
-  'thalia.home',
-  'thalia.about'
+  'thalia.videos',
+  'thalia.music',
+  'ui.router'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider ) {
-  $urlRouterProvider.otherwise( '/home' );
+  $urlRouterProvider.otherwise( '/videos' );
 })
 
 .run( function run () {

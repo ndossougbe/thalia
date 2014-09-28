@@ -1,4 +1,4 @@
-angular.module( 'thalia.home', [
+angular.module( 'thalia.videos', [
   'ui.router',
   'thalia.resources'
 ])
@@ -9,22 +9,22 @@ angular.module( 'thalia.home', [
  * this way makes each module more "self-contained".
  */
 .config(function config( $stateProvider ) {
-  $stateProvider.state( 'home', {
-    url: '/home',
+  $stateProvider.state( 'videos', {
+    url: '/videos',
     views: {
       "main": {
-        controller: 'HomeCtrl',
-        templateUrl: 'home/home.tpl.html'
+        controller: 'VideosCtrl',
+        templateUrl: 'videos/videos.tpl.html'
       }
     },
-    data:{ pageTitle: 'Home' }
+    data:{ pageTitle: 'Videos' }
   });
 })
 
 /**
  * And of course we define a controller for our route.
  */
-.controller( 'HomeCtrl', function HomeController( $scope, Media ) {
+.controller( 'VideosCtrl', function VideosController( $scope, Media ) {
   $scope.dataset = Media.query();
 })
 

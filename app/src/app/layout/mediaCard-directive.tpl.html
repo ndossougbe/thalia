@@ -1,0 +1,31 @@
+<div class="row card" ng-class="{'card-big': !hideDetails}">
+  <div ng-click="hideDetails = !hideDetails">
+    <div class="col-sm-12">
+      <span class="card-header">{{::media.title}}</span>
+      <span ng-repeat="genre in media.genres" class="badge">{{::genre.label}}</span>
+    </div>
+  </div>
+  <div ng-hide="hideDetails" class="row">
+    <div class="col-sm-2">
+      <div style="height: 100px; width:100px; padding:5px; background-color: gray">
+        P L A C E H O L D E R
+      </div>
+    </div>
+    <div class="col-sm-10">
+      <span ng-if="media.description.length > 200">
+        <span ng-bind-html="::media.description | limitTo:200 | lf2br | trustAsHtml"></span>
+        ... <a href="#">Plus »</a>
+      </span>
+      <span ng-if="media.description.length <= 200">
+        <span ng-bind-html="::media.description | lf2br | trustAsHtml" ></span>
+      </span>
+      <ul ng-repeat="version in media.versions">
+        <li class="format">
+          <span class="format">{{::version.format.label}}</span>
+          <span class="location">{{::version.location}}</span>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>

@@ -39,8 +39,10 @@ public class ThaliaApplication extends Application<ThaliaConfiguration> {
 
     @Override
     public void initialize(Bootstrap<ThaliaConfiguration> bootstrap) {
-        // The classpath is supposed to include thalia/app/, which contains build
-        bootstrap.addBundle(new AssetsBundle("/build/", "/", "index.html", "app"));
+
+        /* Dev: thalia/app/ should be added to the classpath. the build directory is then picked up as asset root.
+         * TODO: Automate building the JS app and add it to the resources dir, so that it all sits in the JAR. */
+        bootstrap.addBundle(new AssetsBundle("/build/", "/", "index.html"));
 
         bootstrap.addBundle(hibernate);
     }

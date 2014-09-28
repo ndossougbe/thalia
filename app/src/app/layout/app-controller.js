@@ -3,7 +3,7 @@
  *
  * Description
  */
-angular.module('thalia.layout', [])
+angular.module('thalia.layout.appCtrl', [])
 
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){

@@ -9,10 +9,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 public class ThaliaConfiguration extends Configuration {
+
     @Valid
     @NotNull
     @JsonProperty("database")
     private DataSourceFactory database = new DataSourceFactory();
+
 
     public DataSourceFactory getDataSourceFactory() {
         return database;

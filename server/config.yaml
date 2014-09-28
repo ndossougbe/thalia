@@ -22,8 +22,6 @@ database:
   validationQuery: "/* Thalia Health Check */ VALUES 1"
   logValidationErrors: true
 
-
-
 logging:
     # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
     level: INFO

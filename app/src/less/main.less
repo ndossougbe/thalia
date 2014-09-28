@@ -10,10 +10,10 @@
  * project should be imported as the rest are just wasting space.
  */
 
- @import '../../vendor/bootstrap/less/bootstrap.less';
- @import '../../vendor/font-awesome/less/font-awesome.less';
+@import '../../vendor/bootstrap/less/bootstrap.less';
 
-@fa-font-path: '../assets';
+@import '../../vendor/font-awesome/less/font-awesome.less';
+@fa-font-path: '../assets'; // Overwrite the path to change where the fonts are loaded from.
 
 /**
  * This is our main variables file. We must include it last so we can overwrite any variable
@@ -22,102 +22,7 @@
 
 @import 'variables.less';
 
-// @shadow-color: #888;
-@shadow-color: rgba(0, 0, 0, 0.3);
-@card-background-color: white;
-@card-shadow: 0 8px 6px -6px @shadow-color;
-
-@sidebar-width: 225px;
-@topbar-height: 100px;
-@advanced-search-height: 50px;
-
-/**
- * Layout
- */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* Essentials */
-.top-layer {
-  position: fixed;
-  top: 0;
-  height: 100%; width:100%;
-  pointer-events:none;
-  z-index: 1000;
-
-  &>div {
-    pointer-events:auto;
-    &#topbar {
-      height: @topbar-height;
-      width: 100%;
-      box-shadow: 0 3px 7px @shadow-color;
-
-      &.advanced-search {
-        height: @topbar-height + @advanced-search-height;
-      }
-    }
-    &#sidebar {
-      width: @sidebar-width;
-      height: calc(~"100% - "@topbar-height);
-      box-shadow: 7px 0px 7px -8px @shadow-color;
-    }
-  }
-}
-.bottom-layer {
-  height: 100%;
-  width:100%;
-  background-color: red;
-
-  #content-wrapper {
-    padding-top: @topbar-height;
-    padding-left: @sidebar-width;
-    height: 100%;
-
-    &.advanced-search {
-      padding-top: @topbar-height + @advanced-search-height;
-    }
-
-    &.no-sidebar {
-      padding-left: 0;
-      width: 100%;
-    }
-
-    #content {
-      background-color:@navbar-default-bg;
-      min-height: 100%;
-      padding-top: 10px;
-    }
-  }
-}
-
-/**
- * Layout style
- */
-
-#sidebar,#topbar {
-  padding: 5px;
-  background-color: @card-background-color;
-}
-
-
-.card {
-  background-color: @card-background-color;
-  box-shadow: @card-shadow;
-  margin: 0 5px 0 15px;
-
-  &.card-big {
-    margin: 10px;
-  }
-
-  .card-header {
-    line-height: 1.5em;
-    font-weight: bold;
-  }
-}
-
+@import '../app/layout/layout.less';
 
 
 /**
@@ -127,5 +32,5 @@ html, body {
  * TODO: In a later version of this boilerplate, I'd like to automate this.
  */
 
- @import '../app/home/home.less';
+ @import '../app/videos/videos.less';
 

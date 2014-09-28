@@ -1,16 +1,16 @@
 describe('lf2br filter', function() {
-	describe( 'apply filter', function() {
-		var $filter;
+  describe( 'apply filter', function() {
+    var $filter;
 
-		beforeEach( module( 'thalia' ) );
+    beforeEach( module( 'thalia' ) );
 
-		beforeEach(function () {
-			inject(function (_$filter_) {
-				$filter = _$filter_;
-			});
-		});
+    beforeEach(function () {
+      inject(function (_$filter_) {
+        $filter = _$filter_;
+      });
+    });
 
-		it('should replace cr, lf and crlf', function () {
+    it('should replace cr, lf and crlf', function () {
     // Arrange.
     var string = 'hello \n world \r ! \r\n', result;
 
@@ -20,5 +20,5 @@ describe('lf2br filter', function() {
     // Assert.
     expect(result).toEqual('hello <br /> world <br /> ! <br />');
   });
-	});
+  });
 });
