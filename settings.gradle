@@ -1,3 +1,2 @@
 rootProject.name = 'thalia'
-include 'server', 'app'
-
+include 'server', 'app', 'desktop'
