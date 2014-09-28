@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6">
+      <big class="navbar-brand">thalia</big>
+      <span class="navbar-text">
+        Media Manager
+        <small>
+          <a href="#">
+            v{{::pkg.version}}
+          </a>
+        </small>
+      </span>
+      <a href class="navbar-text" ng-click="display.sidebar = !display.sidebar">toggle sidebar</a>
+      <a href class="navbar-text" ng-click="display.advancedSearch = !display.advancedSearch">toggle advanced search</a>
+    </div>
+    <div class="col-sm-6 navbar-form" ng-hide="display.advancedSearch">
+      <form class="navbar-form" role="search" >
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="navbar-text" ng-show="display.advancedSearch">advanced search</div>
+  </div>
+</div>

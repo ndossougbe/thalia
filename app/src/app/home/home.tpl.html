@@ -1,21 +1,19 @@
-<div class="row">
-  <div class="col-sm-12 well">
-    filters
-  </div>
-</div>
-
-<div class="results">
-  <div ng-repeat="media in dataset" class="row media-card">
+<div>
+  <div ng-repeat="media in dataset" class="row card" ng-class="{'card-big': !hideDetails}">
     <div class="col-sm-10">
-      <div ng-click="display = !display">
-        <b>{{::media.title}}</b>
-        <span ng-repeat="genre in media.genres" class="badge">{{::genre.label}}</span>
-      </div>
-      <div ng-show="display" class="row">
-        <div class="col-sm-4">
-          <div style="height: 100px; width:100px; background-color: gray">&nbsp;</div>
+      <div ng-click="hideDetails = !hideDetails">
+        <div class="col-sm-12">
+          <span class="card-header">{{::media.title}}</span>
+          <span ng-repeat="genre in media.genres" class="badge">{{::genre.label}}</span>
         </div>
-        <div class="col-sm-8">
+      </div>
+      <div ng-hide="hideDetails" class="row">
+        <div class="col-sm-2">
+          <div style="height: 100px; width:100px; padding:5px; background-color: gray">
+            P L A C E H O L D E R
+          </div>
+        </div>
+        <div class="col-sm-10">
           <span ng-if="media.description.length > 200">
             <span ng-bind-html="::media.description | limitTo:200 | lf2br | trustAsHtml"></span>
             ... <a href="#">Plus »</a>
@@ -34,7 +32,6 @@
       </div>
     </div>
   </div>
-
 </div>
 
 
