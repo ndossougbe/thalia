@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import java.lang.String?>
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="thalia.desktop.controllers.RootController" styleClass="borders">
+    <padding>
+        <Insets top="25" right="25" bottom="10" left="25"/>
+    </padding>
+
+    <top>
+        <FlowPane styleClass="borders">
+            <Text text="BREADCRUMB-PLACEHOLDER" fx:id="location"></Text>
+            <Button text="MENU" onAction="#handleMenuScreenAction"/>
+        </FlowPane>
+    </top>
+
+    <center>
+        <HBox fx:id="container" styleClass="borders" alignment="CENTER"></HBox>
+    </center>
+    <stylesheets>
+        <String fx:value="views/style.css"/>
+    </stylesheets>
+
+</BorderPane>

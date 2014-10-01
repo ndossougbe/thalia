@@ -19,11 +19,6 @@ import thalia.resources.MetadataResource;
 
 public class ThaliaApplication extends Application<ThaliaConfiguration> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ThaliaApplication.class);
-
-    public static void main(String[] args) throws Exception {
-        new ThaliaApplication().run(args);
-    }
-
     private final HibernateBundle<ThaliaConfiguration> hibernate = new HibernateBundle<ThaliaConfiguration>(
             Media.class, Format.class, Genre.class, Version.class) {
         @Override
@@ -31,6 +26,10 @@ public class ThaliaApplication extends Application<ThaliaConfiguration> {
             return configuration.getDataSourceFactory();
         }
     };
+
+    public static void main(String[] args) throws Exception {
+        new ThaliaApplication().run(args);
+    }
 
     @Override
     public String getName() {

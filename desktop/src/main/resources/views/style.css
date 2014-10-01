@@ -4,3 +4,7 @@
    -fx-fill: #818181;
    -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );
 }
+.borders {
+    -fx-border-width: 2px;
+    -fx-border-color: red;
+}
