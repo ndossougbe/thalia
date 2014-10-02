@@ -5,16 +5,18 @@ import javafx.fxml.FXML;
 import javafx.scene.text.Text;
 import thalia.desktop.Screen;
 import thalia.desktop.ScreenManager;
+import thalia.desktop.client.ServerStatusService;
 
 import java.util.ResourceBundle;
 
 public class MainMenuController extends AbstractController {
     @FXML
-    private Text status_text;
+    private Text statusText;
     @FXML
     private ResourceBundle resources;
 
     public void initialize() {
+
     }
 
     public void handleScanDirectoryAction(ActionEvent actionEvent) {
@@ -25,9 +27,13 @@ public class MainMenuController extends AbstractController {
     }
 
     public void handleServerStatusAction(ActionEvent actionEvent) {
-    }
-
-    public void handleToggleServerAction(ActionEvent actionEvent) {
+        ServerStatusService statusService = new ServerStatusService();
+        statusService.setOnSucceeded(e -> statusText.setText(e.getSource().getValue().toString()));
+        statusService.setOnFailed(e -> {
+            statusText.setText(e.getSource().getException().getMessage());
+            throw new RuntimeException(e.getSource().getException());
+        });
+        statusService.start();
     }
 
     public void handleBackupDatabaseAction(ActionEvent actionEvent) {

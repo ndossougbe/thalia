@@ -30,8 +30,8 @@
         <Text text="%SYSTEM_ADMINISTRATION_LABEL"/>
         <VBox spacing="10" alignment="TOP_LEFT">
             <Text text="%WEB_SERVER_LABEL"/>
+            <Text fx:id="statusText"/>
             <Button text="%SERVER_STATUS_LABEL" onAction="#handleServerStatusAction"/>
-            <Button text="%SERVER_START_LABEL" onAction="#handleToggleServerAction"/>
         </VBox>
         <VBox spacing="10" alignment="TOP_LEFT">
             <Text text="%DATABASE_LABEL"/>

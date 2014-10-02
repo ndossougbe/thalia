@@ -9,3 +9,4 @@ release.properties
 *.sublime-workspace
 build/
 thaliaDB/
+derby.log

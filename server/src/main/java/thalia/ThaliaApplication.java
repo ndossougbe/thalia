@@ -4,6 +4,8 @@ import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.jetty.HttpConnectorFactory;
+import io.dropwizard.server.SimpleServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.slf4j.Logger;
@@ -19,6 +21,7 @@ import thalia.resources.MetadataResource;
 
 public class ThaliaApplication extends Application<ThaliaConfiguration> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ThaliaApplication.class);
+
     private final HibernateBundle<ThaliaConfiguration> hibernate = new HibernateBundle<ThaliaConfiguration>(
             Media.class, Format.class, Genre.class, Version.class) {
         @Override
@@ -26,6 +29,8 @@ public class ThaliaApplication extends Application<ThaliaConfiguration> {
             return configuration.getDataSourceFactory();
         }
     };
+
+    private int apiPort;
 
     public static void main(String[] args) throws Exception {
         new ThaliaApplication().run(args);
@@ -57,5 +62,12 @@ public class ThaliaApplication extends Application<ThaliaConfiguration> {
         environment.jersey().setUrlPattern("/api/*");
         environment.jersey().register(new MediaResource(mediaDAO));
         environment.jersey().register(new MetadataResource(new MetadataDAO(hibernate.getSessionFactory())));
+
+
+        apiPort = ((HttpConnectorFactory) ((SimpleServerFactory) configuration.getServerFactory()).getConnector()).getPort();
+    }
+
+    public int getApiPort() {
+        return apiPort;
     }
 }

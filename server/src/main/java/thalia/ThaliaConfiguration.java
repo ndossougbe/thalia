@@ -19,4 +19,6 @@ public class ThaliaConfiguration extends Configuration {
     public DataSourceFactory getDataSourceFactory() {
         return database;
     }
+
+
 }
