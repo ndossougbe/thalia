@@ -4,16 +4,13 @@ import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
 import io.dropwizard.db.DataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
+import io.dropwizard.hibernate.ScanningHibernateBundle;
 import io.dropwizard.jetty.HttpConnectorFactory;
 import io.dropwizard.server.SimpleServerFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import thalia.core.Format;
-import thalia.core.Genre;
-import thalia.core.Media;
-import thalia.core.Version;
 import thalia.dao.MediaDAO;
 import thalia.dao.MetadataDAO;
 import thalia.resources.MediaResource;
@@ -22,8 +19,7 @@ import thalia.resources.MetadataResource;
 public class ThaliaApplication extends Application<ThaliaConfiguration> {
     private static final Logger LOGGER = LoggerFactory.getLogger(ThaliaApplication.class);
 
-    private final HibernateBundle<ThaliaConfiguration> hibernate = new HibernateBundle<ThaliaConfiguration>(
-            Media.class, Format.class, Genre.class, Version.class) {
+    private final HibernateBundle<ThaliaConfiguration> hibernate = new ScanningHibernateBundle<ThaliaConfiguration>("thalia.core") {
         @Override
         public DataSourceFactory getDataSourceFactory(ThaliaConfiguration configuration) {
             return configuration.getDataSourceFactory();
